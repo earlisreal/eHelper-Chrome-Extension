@@ -16,6 +16,6 @@ exit /b
 
 :run
 
-reg add HKLM\SOFTWARE\Google\Chrome\NativeMessagingHosts\com.my_company.my_application /f /ve /t REG_SZ /d %~dp0com.my_company.my_application-win.json
+reg add HKLM\SOFTWARE\Google\Chrome\NativeMessagingHosts\com.earl.ehelper /f /ve /t REG_SZ /d %~dp0com.earl.ehelper-win.json
 
 pause

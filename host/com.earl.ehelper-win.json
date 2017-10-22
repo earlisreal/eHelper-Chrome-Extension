@@ -1,0 +1,9 @@
+{
+  "name": "com.earl.ehelper",
+  "description": "Write parsed test cases to file and open gvim",
+  "path": "host.bat",
+  "type": "stdio",
+  "allowed_origins": [
+    "chrome-extension://didkodmkmcjlfdajcnjpppccpheagmch/"
+  ]
+}

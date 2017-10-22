@@ -1,4 +1,4 @@
-var application = 'com.my_company.my_application';
+var application = 'com.earl.ehelper';
 
 chrome.runtime.onMessage.addListener(function(message, sender, sendResponse){
 	console.log("Received message on eventPage");
@@ -16,7 +16,8 @@ function log(msg) {
 }
 
 function checkForValidUrl(tabId, changeInfo, tab) {
-    if (/^https:\/\/.*[.]kattis[.]com\/(contests\/.+\/)?problems\/.*$/.test(tab.url) ||
+    if (/^http?:\/\/(www[.])?spoj[.]com\/(.*\/)?problems\/.*$/.test(tab.url) ||
+		/^https:\/\/.*[.]kattis[.]com\/(contests\/.+\/)?problems\/.*$/.test(tab.url) ||
         /^https:\/\/.*contest2?[.]yandex[.](ru|com)\/.*contest\/\d*\/problems.*$/.test(tab.url) ||
         /^http:\/\/codeforces[.](ru|com)\/(contest|problemset|gym)\/(\d*\/problem|problem\/\d*)\/.+$/.test(tab.url) ||
         /^https:\/\/(www[.])?hackerrank[.]com\/(contests\/.+\/)?challenges\/[^/]+$/.test(tab.url) ||
@@ -62,7 +63,10 @@ function parseTask(tab) {
         chrome.tabs.sendMessage(tab.id, 'atcoder');
     } else if (/^https:\/\/csacademy[.]com\/contest\/.*\/#task\/.*$/.test(tab.url)) {
         chrome.tabs.sendMessage(tab.id, 'csacademy');
-    }
+    } else if (/^http?:\/\/(www[.])?spoj[.]com\/(.*\/)?problems\/.*$/.test(tab.url)) {
+        chrome.tabs.sendMessage(tab.id, 'spoj');
+	}
+
 }
 
 chrome.pageAction.onClicked.addListener(parseTask);

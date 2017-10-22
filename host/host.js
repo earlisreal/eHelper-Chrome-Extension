@@ -31,21 +31,24 @@ input.on('end', function() {
 });
 
 function messageHandler(msg, push, done) {
+
+	// TODO: Make path dynamic by prompting the user
     
-    var path = 'C:/Programs/' + msg.platform + '/' + msg.title;
+    var path = 'C:/Users/ching/Programs/' + msg.platform + '/' + msg.title;
+
+	// TODO: Recursively make all not existing folders
     if (!fs.existsSync(path)) {
         fs.mkdir(path);
     }
     
-    
-    fs.writeFile('C:/Programs/' + msg.platform + '/' + msg.title + '/tests', msg.testCases, function(err) {
-        if(err) {
-            return console.log(err);
-        }
+	fs.writeFile(path + '/tests', msg.testCases, function(err) {
+		if(err) {
+			return console.log(err);
+		}
 
-        console.log("The file was saved!");
-    }); 
-    
+		console.log("The file was saved!");
+	}); 
+
     var exec = require('child_process').exec;
     exec('gvim --remote-tab "' + path + '/' + 'sol.cpp"', function callback(error, stdout, stderr){
         push(error);
