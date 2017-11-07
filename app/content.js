@@ -23,6 +23,8 @@ function parseTestCases(request, sender, sendResponse) {
         title = $('.problem-statement>.header>.title')[0].innerText.substring(3);
 	}
 	else if (request == "codechef") {
+		// TODO: Issue when Input keyword does not exists in <pre>
+		//		 it is inside <h3> then pre is next to it
 		title = $('#problem-code')[0].innerText;
 		console.log(title);
 		$('pre:contains(Input)').each(function(key, value) {
