@@ -54,7 +54,7 @@ function parseTestCases(request, sender, sendResponse) {
 	else if (request == "atcoder") {
 		title = $('h2')[0].innerText.substring(4);
 		console.log(title);
-		var inputOutput = $('.div-sample-copy');
+		var inputOutput = $('.div-sample-copy:visible');
 		$.each(inputOutput, function(index, value) {
 			if (index % 2 == 0) {
 				testCases += "Input:\n";
