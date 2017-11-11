@@ -1,6 +1,6 @@
 @echo off
 
-set LOG=C:\Users\ching\Desktop\log.txt
+set LOG=C:\Users\esavader.ORADEV\Desktop\log.txt
 
 time /t >> %LOG%
 

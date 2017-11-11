@@ -3,6 +3,7 @@
 // Might be good to use an explicit path to node on the shebang line in case
 // it isn't in PATH when launched by Chrome.
 
+var config = require('./config.json');
 var fs = require('fs');
 
 var nativeMessage = require('../index');
@@ -31,14 +32,11 @@ input.on('end', function() {
 });
 
 function messageHandler(msg, push, done) {
-
-	// TODO: Make path dynamic by prompting the user
     
-    var path = 'C:/Users/ching/Programs/' + msg.platform + '/' + msg.title;
+    var path = config.base_path + msg.platform + '/' + msg.title;
 
-	// TODO: Recursively make all not existing folders
     if (!fs.existsSync(path)) {
-        fs.mkdir(path);
+		makeDirs(path);
     }
     
 	fs.writeFile(path + '/tests', msg.testCases, function(err) {
@@ -50,14 +48,31 @@ function messageHandler(msg, push, done) {
 	}); 
 
     var exec = require('child_process').exec;
-    exec('gvim --remote-tab "' + path + '/' + 'sol.cpp"', function callback(error, stdout, stderr){
-        push(error);
-        push(stdout);
-        push(stderr);
+    exec('gvim --remote-tab "' + path + '/' + config.program_name, function callback(error, stdout, stderr){
+        //
     });
     
     
     // Just echo the message:
     push(msg.testCases);
     done();
+}
+
+function makeDirs(path) {
+	var folders = path.split("/");
+	if (folders.length < 1) {
+		console.log("Invalid Programs path");
+		return;
+	}
+	var currentFolder = folders[0];
+	if (!fs.existsSync(currentFolder)) {
+		console.log("Invalid Base Path");
+		return;
+	}
+	for (var i = 1; i < folders.length; i++) {
+		currentFolder += "/" + folders[i];
+		if (!fs.existsSync(currentFolder)) {
+			fs.mkdir(currentFolder);
+		}
+	}
 }

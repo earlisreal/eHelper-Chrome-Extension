@@ -23,6 +23,8 @@ function parseTestCases(request, sender, sendResponse) {
         title = $('.problem-statement>.header>.title')[0].innerText.substring(3);
 	}
 	else if (request == "codechef") {
+		// TODO: Issue when Input keyword does not exists in <pre>
+		//		 it is inside <h3> then pre is next to it
 		title = $('#problem-code')[0].innerText;
 		console.log(title);
 		$('pre:contains(Input)').each(function(key, value) {
@@ -33,12 +35,10 @@ function parseTestCases(request, sender, sendResponse) {
 	else if (request == "spoj") {
 		title = $('.breadcrumb li.active')[0].innerText;
 		console.log(title);
-		var input = $('pre:contains(Input)');
-		if (input.length < 1) {
-			input = $('p:contains(Sample Input)').next();
-			var output = $('p:contains(Sample Output)').next();
+		var input = $('h3:contains(ample)').next();
+		if (input.length > 1) {
 			testCases = "Input:\n" + input[0].innerText;
-			testCases += "Output:\n" + output[0].innerText;
+			testCases += "Output:\n" + input[1].innerText;
 		}
 		else {
 			testCases = input[0].innerText;
