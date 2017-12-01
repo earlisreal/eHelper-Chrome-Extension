@@ -7,6 +7,16 @@ function parseTestCases(request, sender, sendResponse) {
         return;
 	}
 
+	var urlTokens = location.href.split("/");
+	var x = urlTokens.length - 1
+	var problemCode;
+	while (urlTokens[x].length < 1) {
+		--x;
+	}
+	problemCode = urlTokens[x];
+
+	console.log(problemCode);
+
 	console.log("parsing Test Cases");
 	console.log("Request: " +request);
 
@@ -33,8 +43,8 @@ function parseTestCases(request, sender, sendResponse) {
 		console.log(testCases);
 	}
 	else if (request == "spoj") {
-		title = $('.breadcrumb li.active')[0].innerText;
-		console.log(title);
+		// title = $('.breadcrumb li.active')[0].innerText;
+		title = problemCode;
 		var input = $('h3:contains(ample)').next();
 		if (input.length > 1) {
 			testCases = "Input:\n" + input[0].innerText;
@@ -43,6 +53,7 @@ function parseTestCases(request, sender, sendResponse) {
 		else {
 			testCases = input[0].innerText;
 		}
+		testCases += "\n";
 	}
 	else if (request == "hackerearth") {
 		title = $('#problem-title')[0].innerText;
@@ -76,6 +87,13 @@ function parseTestCases(request, sender, sendResponse) {
 			}
 			testCases += $(this)[0].innerText + "\n";
 		});
+	}
+	else if(request == "spojtoolkit") {
+		request = "spoj";
+		title = problemCode;
+		var input = $('#testInput')[0].value;
+		var output = $('#testOutput')[0].value;
+		testCases = "Input:\n" + input + "\n\nOutput:\n" + output + "\n";
 	}
 	else {
 		return;

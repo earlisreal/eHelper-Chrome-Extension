@@ -39,7 +39,7 @@ function messageHandler(msg, push, done) {
 		makeDirs(path);
     }
     
-	fs.writeFile(path + '/tests', msg.testCases, function(err) {
+	fs.appendFile(path + '/tests', msg.testCases, function(err) {
 		if(err) {
 			return console.log(err);
 		}
