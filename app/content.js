@@ -1,4 +1,4 @@
-// TODO : Display a pop up window when the path for programs has not been set up or previous path doesn't exists
+// TODO : spoj parsing bug - ARM10G
 
 chrome.runtime.onMessage.addListener(parseTestCases);
 
@@ -43,7 +43,11 @@ function parseTestCases(request, sender, sendResponse) {
 		console.log(testCases);
 	}
 	else if (request == "spoj") {
+		//
+		// Complete title of the problem
 		// title = $('.breadcrumb li.active')[0].innerText;
+		//
+
 		title = problemCode;
 		var input = $('h3:contains(ample)').next();
 		if (input.length > 1) {
