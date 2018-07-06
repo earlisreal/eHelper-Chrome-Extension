@@ -60,9 +60,9 @@ function parseTestCases(request, sender, sendResponse) {
 		testCases += "\n";
 	}
 	else if (request == "hackerearth") {
-		title = $('#problem-title')[0].innerText;
-		var input = $('.dark pre')[0].innerText;
-		var output = $('.dark pre')[1].innerText;
+		title = $('.hr_tour-challenge-name')[0].innerText;
+		var input = $('pre > code')[0].innerText;
+		var output = $('pre > code')[1].innerText;
 		testCases = "Input:\n" + input;
 		testCases += "\nOutput:\n" + output;
 	}

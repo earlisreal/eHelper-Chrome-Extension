@@ -1,58 +1,17 @@
-# Chrome Native Messaging for Node.js
+# eHelper
 
-Transform streams for writing Chrome App [native messaging][1] hosts in Node.js.
+Parse programming contest sample test cases directly to vim.
 
-[1]: https://developer.chrome.com/extensions/messaging#native-messaging
+This extension is designed to work with (eHelper.vim)[https://github.com/earlisreal/ehelper] that will feed the parsed test cases when you run your code for easy testing.
 
 ## Install
 
-```
-npm i -S chrome-native-messaging
-```
-
-## API
-
-The module exports `Input`, `Output`, and `Transform` transform streams.
-
-`Input` streams transform bytes to objects.
-
-`Output` streams transform objects to bytes.
-
-Use `Transform` to easily create custom object-to-object transform streams.
-
-```
-var nativeMessage = require('chrome-native-messaging');
-
-process.stdin
-    .pipe(new nativeMessage.Input())
-    .pipe(new nativeMessage.Transform(function(msg, push, done) {
-        var reply = getReplyFor(msg); // Implemented elsewhere by you.
-        push(reply);                  // Push as many replies as you like.
-        done();                       // Call when done pushing replies.
-    }))
-    .pipe(new nativeMessage.Output())
-    .pipe(process.stdout)
-;
-```
-
-## Example
-
-The `app` directory contains a sample Chrome App.
-
-The `host` directory contains a native messaging host that you can send
-messages to.
-
-Go to the Chrome Extensions page (chrome://extensions/), hit "Load unpacked
-extension...", and select this project's `app` directory.
-
-SUPER IMPORTANT: Find the ID your app received when you loaded it and copy it
-to the host manifest in the `host` directory.
-
-SUPER IMPORTANT ON MACS: The path to the host must be absolute. Make sure the
-"path" property in the manifest is correct (it's probably not unless you're me).
-
-Install the host manifest:
-
+* Install the app folder into chrome extension
+* Prepare the host installation
+	* Edit the 'host/com.earl.ehelper-win.json' for windows or 'host/com.earl.ehelper.json' for linux
+	* Get the chrome extension ID at 'chrome://extensions/ > eHelper > Details'
+	* Copy the ID to 'allowed_origins' (i.e '"chrome-extension://[YOUR-APP-ID]/"')
+* Install the host manifest:
 ```
 sudo host/register.sh
 ```
@@ -63,54 +22,8 @@ On Windows (Run as Administrator):
 host\register.bat
 ```
 
-Open a new tab and hit Apps in the upper left. Launch the example app and send
-yourself messages.
+## Usage
 
-## Testing
-
-Run `npm test` for the unit tests.
-
-`json2msg.js` is a script that can convert lines of JSON into native messages.
-Use it to send messages to your host to see how it responds.
-
-Pipe the output of your host to `msg2json.js` to see what its output looks like.
-
-```
-./json2msg.js < test.json | ./host/my_host.js | ./msg2json.js
-```
-
-On Windows:
-
-```
-node json2msg.js < test.json | node host\my_host.js | node msg2json.js
-```
-
-## Logging
-
-Enabling logging in Chrome can help find problems finding the manifest.
-
-Quit Chrome first.
-
-```
-open -a Google\ Chrome --args --enable-logging --v=1
-```
-
-On Windows:
-
-```
-start chrome --enable-logging --v=1
-```
-
-View the log like this:
-
-```
-less ~/Library/Application\ Support/Google/Chrome/chrome_debug.log
-```
-
-On Windows:
-
-```
-type "C:\Users\%USERNAME%\AppData\Local\Google\Chrome\User Data\chrome_debug.log"
-```
-
-More info: http://www.chromium.org/for-testers/enable-logging
+* Make sure gvim is open
+* Go to a problem page (i.e (Watermelon) [http://codeforces.com/problemset/problem/4/A])
+* Click the eHelper icon on the top right of your browser and Thats it!

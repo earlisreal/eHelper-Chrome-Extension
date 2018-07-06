@@ -32,8 +32,10 @@ input.on('end', function() {
 });
 
 function messageHandler(msg, push, done) {
+	// Clean the String - Remove invalid filename characters
+	var title = msg.title.replace(/[|&:;$%@"<>()+,]/g, "");
     
-    var path = config.base_path + msg.platform + '/' + msg.title;
+    var path = config.base_path + msg.platform + '/' + title;
 
     if (!fs.existsSync(path)) {
 		makeDirs(path);
