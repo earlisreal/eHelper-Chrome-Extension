@@ -8,6 +8,9 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse){
       { testCases: message.testCases, title: message.title, platform: message.platform },
       function(response) {
         console.log(response);
+		  if (chrome.runtime.lastError != null) {
+			  console.log(chrome.runtime.lastError);
+		  }
       });
 });
 

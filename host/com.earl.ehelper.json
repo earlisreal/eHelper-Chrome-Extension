@@ -1,0 +1,9 @@
+{
+  "name": "com.earl.ehelper",
+  "description": "My Application",
+  "path": "host.sh",
+  "type": "stdio",
+  "allowed_origins": [
+    "chrome-extension://ncbanmeafaocofgldcajgchpjhpecnmc/"
+  ]
+}
