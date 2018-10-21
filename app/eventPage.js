@@ -5,9 +5,12 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse){
 	console.log(message);
     
     chrome.runtime.sendNativeMessage(application,
-      { testCases: message.testCases, title: message.title, platform: message.platform },
+      message,
       function(response) {
         console.log(response);
+		  if (chrome.runtime.lastError != null) {
+			  console.log(chrome.runtime.lastError);
+		  }
       });
 });
 

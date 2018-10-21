@@ -4,3 +4,4 @@ DOTAA
 FACEFRND
 NHAY
 http://www.spoj.com/problems/MRECAMAN/
+ARM10G
