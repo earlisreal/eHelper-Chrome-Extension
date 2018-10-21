@@ -30,8 +30,6 @@ def send_message(message):
 
 # Thread that reads messages from the webapp.
 def read_thread_func(queue):
-  message_number = 0
-  # TODO : Search if this while is necessary
   while 1:
     # Read the message length (first 4 bytes).
     text_length_bytes = sys.stdin.read(4)
@@ -57,7 +55,7 @@ def read_thread_func(queue):
 
     # Create tests file and write testCases
     tests = open(path + '/tests', 'w')
-    tests.write(jsonRes['testCases'])
+    tests.write(jsonRes['tests'])
     tests.close()
 
     # Open Gvim

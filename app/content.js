@@ -1,118 +1,35 @@
-// TODO : spoj parsing bug - ARM10G
+console.log("Hi from eHelper!");
+chrome.runtime.onMessage.addListener(parseTests);
 
-chrome.runtime.onMessage.addListener(parseTestCases);
+// Set Global Variables
+var title;
+var tests;
 
-function parseTestCases(request, sender, sendResponse) {
+function parseTests(request, sender, sendResponse) {
 	if (sender.tab) {
         return;
 	}
 
-	var urlTokens = location.href.split("/");
-	var x = urlTokens.length - 1
-	var problemCode;
-	while (urlTokens[x].length < 1) {
-		--x;
-	}
-	problemCode = urlTokens[x];
+	console.log("Parsing Test Cases: " + request);
 
-	console.log(problemCode);
-
-	console.log("parsing Test Cases");
-	console.log("Request: " +request);
-
-	var testCases = "";
-    var title = "";
-	if (request == "codeforces") {
-		var outputs = $('.sample-test .output pre');
-		$('.sample-test .input pre').each(function (index, value) {
-			testCases += "input:\n";
-			testCases += $(this)[0].innerText + "\n";
-			testCases += "output:\n";
-			testCases += outputs[index].innerText + "\n";
-		});
-        title = $('.problem-statement>.header>.title')[0].innerText.substring(3);
+	try {
+		title = "";
+		tests = "";
+		// Call the parser by platform name
+		window[request]();
 	}
-	else if (request == "codechef") {
-		// TODO: Issue when Input keyword does not exists in <pre>
-		//		 it is inside <h3> then pre is next to it
-		title = $('#problem-code')[0].innerText;
-		console.log(title);
-		$('pre:contains(Input)').each(function(key, value) {
-			testCases += $(this)[0].innerText;
-		});
-		console.log(testCases);
-	}
-	else if (request == "spoj") {
-		//
-		// Complete title of the problem
-		// title = $('.breadcrumb li.active')[0].innerText;
-		//
-
-		title = problemCode;
-		var input = $('h3:contains(ample)').next();
-		if (input.length > 1) {
-			testCases = "Input:\n" + input[0].innerText;
-			testCases += "Output:\n" + input[1].innerText;
-		}
-		else {
-			testCases = input[0].innerText;
-		}
-		testCases += "\n";
-	}
-	else if (request == "hackerearth") {
-		title = $('.hr_tour-challenge-name')[0].innerText;
-		var input = $('pre > code')[0].innerText;
-		var output = $('pre > code')[1].innerText;
-		testCases = "Input:\n" + input;
-		testCases += "\nOutput:\n" + output;
-	}
-	else if (request == "atcoder") {
-		title = $('h2')[0].innerText.substring(4);
-		console.log(title);
-		var inputOutput = $('.div-sample-copy:visible');
-		$.each(inputOutput, function(index, value) {
-			if (index % 2 == 0) {
-				testCases += "Input:\n";
-			}
-			else {
-				testCases += "Output:\n";
-			}
-			testCases += $(this).next()[0].innerText + "\n";
-		});
-	}
-	else if (request == "hackerrank") {
-		title = $('.hr_tour-challenge-name')[0].innerText;
-		$('.hackdown-content pre').each(function (index, value) {
-			if (index % 2 == 0) {
-				testCases += "Input:\n";
-			}
-			else {
-				testCases += "Output:\n";
-			}
-			testCases += $(this)[0].innerText + "\n";
-		});
-	}
-	else if(request == "spojtoolkit") {
-		request = "spoj";
-		title = problemCode;
-		var input = $('#testInput')[0].value;
-		var output = $('#testOutput')[0].value;
-		testCases = "Input:\n" + input + "\n\nOutput:\n" + output + "\n";
-	}
-	else {
-		return;
+	catch (error) {
+		// Platform (request) not supported
+		// TODO : Call function using request string. When platform doesnt exists or not supported, just make a blank tests file
+		console.error("Platform not yet supported");
 	}
 
-	// TODO : Modularize each platform on different file or use switch
-	// TODO : Call function using request string. When platform doesnt exists in code, just make a blank tests file
-    
-	console.log(testCases);
-
-	chrome.runtime.sendMessage({ 
+	var res = { 
         platform: request,
-        testCases: testCases,
-        title: title
-    });
-}
+        title: title,
+        tests: tests
+    };
 
-console.log("Content Script logged");
+	console.log(res);
+	chrome.runtime.sendMessage(res);
+}
