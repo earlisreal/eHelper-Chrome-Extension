@@ -1,4 +1,6 @@
 {
+  // Extension ID: pigfgakhnkoaobicdgofpldhnpbeiopj
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAqAsduvDgbc59ENVLG9RBzhCSsF3kqHfLb6P+Ra3vhYlo+6vWOAqvtT23wJVH5AQ/BLoD/8geFRIC7mkpwV+MHmdie7FoP+9Lz2pnfI1FQguuCtqaPEeNq0aoluMAw/qWSs6sFsmZndx8u/eQVNc/Lxla0tuC8XnP2kGKJwKVkRr43wqckzo8/25PXrwBaVEXBmh0Qf2NXq6c34397u4V9nA6y5K7kHr8mqKMjLD+s7VuiWUmUdZuDXGGE5N75VAwZ28SMXYDo2i3kOuX5hUp30klaezaIBp2ekNmhaVXf1UtY+bn10FlHRvHc9gMEb1xBWE8CyDhNMGjPLpe5T8OTQIDAQAB",
   "manifest_version": 2,
   "name": "eHelper",
   "description": "This extension allows the user to parse sample input/output on programming competitions sites.",

@@ -64,7 +64,7 @@ def read_thread_func(queue):
     subprocess.call(['gvim', '--remote-tab', path  + config['program_name']])
 
     # Program Ends Successfully
-    send_message("Success!")
+    send_message('{"response": "Successfully created the tests file!"}')
 
 def Main():
     read_thread_func(None)

@@ -1,9 +1,9 @@
 {
   "name": "com.earl.ehelper",
-  "description": "My Application",
-  "path": "host.sh",
+  "description": "This extension allows the user to parse sample input/output on programming competitions sites directly into vim",
+  "path": "host.py",
   "type": "stdio",
   "allowed_origins": [
-    "chrome-extension://ncbanmeafaocofgldcajgchpjhpecnmc/"
+    "chrome-extension://pigfgakhnkoaobicdgofpldhnpbeiopj/"
   ]
 }
