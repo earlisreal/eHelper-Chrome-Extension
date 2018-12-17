@@ -12,17 +12,17 @@ function parseTests(request, sender, sendResponse) {
 
 	console.log("Parsing Test Cases: " + request);
 
-	try {
+	// try {
 		title = "";
 		tests = "";
 		// Call the parser by platform name
 		window[request]();
-	}
-	catch (error) {
-		// Platform (request) not supported
-		// TODO : Call function using request string. When platform doesnt exists or not supported, just make a blank tests file
-		console.error("Platform not yet supported");
-	}
+	// }
+	// catch (error) {
+	// 	// Platform (request) not supported
+	// 	// TODO : Call function using request string. When platform doesnt exists or not supported, just make a blank tests file
+	// 	console.error("Platform not yet supported");
+	// }
 
 	var res = { 
         platform: request,

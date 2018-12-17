@@ -47,16 +47,13 @@ function hackerearth() {
 }
 
 function hackerrank() {
-	title = $('.hr_tour-challenge-name')[0].innerText;
-	$('.hackdown-content pre').each(function (index, value) {
-		if (index % 2 == 0) {
-			tests += "Input:\n";
-		}
-		else {
-			tests += "Output:\n";
-		}
-		tests += $(this)[0].innerText + "\n";
-	});
+	title = $('.page-label')[0].innerText;
+	for (var i = 0; i < $('.challenge_sample_input_body').length; ++i) {
+		tests += "Input:\n";
+		tests += $('.challenge_sample_input_body')[i].innerText + "\n";
+		tests += "Output:\n";
+		tests += $('.challenge_sample_output_body')[i].innerText + "\n";
+	}
 }
 
 function spoj() {
