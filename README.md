@@ -8,18 +8,16 @@ This extension is designed to work with (eHelper.vim)[https://github.com/earlisr
 
 * Install the app folder into chrome extension
 * Prepare the host installation
-	* Edit the 'host/com.earl.ehelper-win.json' for windows or 'host/com.earl.ehelper.json' for linux
-	* Get the chrome extension ID at 'chrome://extensions/ > eHelper > Details'
-	* Copy the ID to 'allowed_origins' (i.e '"chrome-extension://[YOUR-APP-ID]/"')
+	* TODO: I will update the install_host.sh to dynamically insert the location to HOST path
 * Install the host manifest:
 ```
-sudo host/register.sh
+sudo host/install_host.sh
 ```
 
 On Windows (Run as Administrator):
 
 ```
-host\register.bat
+host\install_host_win.bat
 ```
 
 ## Usage
