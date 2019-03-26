@@ -45,7 +45,7 @@ def read_thread_func(queue):
     jsonRes = json.loads(text)
 
     # Read the config file
-    with open('config.json') as f:
+    with open('config-win.json') as f:
         config = json.load(f)
     
     # Create folder

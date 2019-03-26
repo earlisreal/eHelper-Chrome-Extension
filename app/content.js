@@ -1,4 +1,4 @@
-console.log("Hi from eHelper!");
+console.log("Hi from eHelper v0.7!");
 chrome.runtime.onMessage.addListener(parseTests);
 
 // Set Global Variables
@@ -12,21 +12,15 @@ function parseTests(request, sender, sendResponse) {
 
 	console.log("Parsing Test Cases: " + request);
 
-	// try {
-		title = "";
-		tests = "";
-		// Call the parser by platform name
-		window[request]();
-	// }
-	// catch (error) {
-	// 	// Platform (request) not supported
-	// 	// TODO : Call function using request string. When platform doesnt exists or not supported, just make a blank tests file
-	// 	console.error("Platform not yet supported");
-	// }
+	title = "";
+	tests = "";
+
+	// Call the parser by platform name
+	window[request]();
 
 	var res = { 
         platform: request,
-        title: title,
+        title: title.trim(),
         tests: tests
     };
 
