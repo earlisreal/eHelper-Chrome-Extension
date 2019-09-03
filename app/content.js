@@ -1,4 +1,4 @@
-console.log("Hi from eHelper v0.7!");
+console.log("Hi from eHelper v0.8!");
 chrome.runtime.onMessage.addListener(parseTests);
 
 // Set Global Variables

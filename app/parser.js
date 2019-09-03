@@ -14,14 +14,14 @@ async function uva() {
 	var sample = false;
 	for (var i = 0; i < items.length; ++i) {
 		if (sample) {
+			if (items[i].str === "Sample Output") {
+				tests += "\n";
+			}
 			tests += items[i].str + "\n";
 		}
 		if (items[i].str === "Sample Input") {
 			tests += items[i].str + "\n";
 			sample = true;
-		}
-		if (items[i].str === "Sample Output") {
-			tests += "\n" + items[i].str + "\n";
 		}
 	}
 

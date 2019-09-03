@@ -4,7 +4,7 @@
   "manifest_version": 2,
   "name": "eHelper",
   "description": "This extension allows the user to parse sample input/output on programming competitions sites.",
-  "version": "1.0",
+  "version": "0.8",
 
   "page_action": {
 	"default_title": "Parse input/output to Vim"
