@@ -3,35 +3,29 @@ async function uva() {
 	title = $('#col3_content_wrapper > table > tbody > tr:nth-child(2) > td > h3')[0].innerText;
 	console.log(title);
 	var url = $('#col3_content_wrapper > table > tbody > tr:nth-child(1) > td:nth-child(2) > a:nth-child(5)').attr('href');
-	tests = await getPdfContent(url);
-	console.log("after waitin -> " + tests);
-}
 
-async function getPdfContent(url) {
-	var tests = "";
 	var loadingTask = pdfjsLib.getDocument({url: url});
-	await loadingTask.promise.then(function (doc) {
-		doc.getPage(1).then(function(page) {
-			page.getTextContent().then(function(textContent){
-				var items = textContent.items;
-				var sample = false;
-				for (var i = 0; i < items.length; ++i) {
-					// console.log(items[i].str);
-					if (sample) {
-						tests += items[i].str + "\n";
-					}
-					if (items[i].str === "Sample Input") {
-						tests += items[i].str + "\n";
-						sample = true;
-					}
-				}
+	var doc = await loadingTask.promise;
 
-				console.log(tests);
+	var page = await doc.getPage(1);
+	var textContent = await page.getTextContent();
 
-			});
-		});
-	});
-	return tests;
+	var items = textContent.items;
+	var sample = false;
+	for (var i = 0; i < items.length; ++i) {
+		if (sample) {
+			tests += items[i].str + "\n";
+		}
+		if (items[i].str === "Sample Input") {
+			tests += items[i].str + "\n";
+			sample = true;
+		}
+		if (items[i].str === "Sample Output") {
+			tests += "\n" + items[i].str + "\n";
+		}
+	}
+
+	console.log(tests);
 }
 
 function atcoder() {
