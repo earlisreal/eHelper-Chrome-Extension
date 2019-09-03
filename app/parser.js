@@ -38,9 +38,9 @@ function codeforces() {
 }
 
 function hackerearth() {
-	title = $('.hr_tour-challenge-name')[0].innerText;
-	var input = $('pre > code')[0].innerText;
-	var output = $('pre > code')[1].innerText;
+	title = $('#problem-title')[0].innerText;
+	var input = $('.input-output pre')[0].innerText;
+	var output = $('.input-output pre')[1].innerText;
 	tests = "Input:\n" + input;
 	tests += "\nOutput:\n" + output;
 
