@@ -5,7 +5,7 @@ chrome.runtime.onMessage.addListener(parseTests);
 var title;
 var tests;
 
-function parseTests(request, sender, sendResponse) {
+async function parseTests(request, sender, sendResponse) {
 	if (sender.tab) {
         return;
 	}
@@ -16,7 +16,7 @@ function parseTests(request, sender, sendResponse) {
 	tests = "";
 
 	// Call the parser by platform name
-	tests = window[request]();
+	await window[request]();
 
 	var res = { 
         platform: request,
