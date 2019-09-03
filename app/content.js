@@ -5,14 +5,6 @@ chrome.runtime.onMessage.addListener(parseTests);
 var title;
 var tests;
 
-pdfParserTest();
-
-function pdfParserTest() {
-	console.log("Trying to parse pdf...");
-	
-	console.log(pdfjsLib);
-}
-
 function parseTests(request, sender, sendResponse) {
 	if (sender.tab) {
         return;
@@ -24,7 +16,7 @@ function parseTests(request, sender, sendResponse) {
 	tests = "";
 
 	// Call the parser by platform name
-	window[request]();
+	tests = window[request]();
 
 	var res = { 
         platform: request,
