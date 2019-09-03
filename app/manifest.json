@@ -4,7 +4,7 @@
   "manifest_version": 2,
   "name": "eHelper",
   "description": "This extension allows the user to parse sample input/output on programming competitions sites.",
-  "version": "1.0",
+  "version": "0.8",
 
   "page_action": {
 	"default_title": "Parse input/output to Vim"
@@ -15,8 +15,8 @@
   },
   "content_scripts": [
 	{
-		"matches": [ "http://spojtoolkit.com/*", "http://www.spoj.com/*", "https://*.contest.yandex.ru/*", "https://*.contest.yandex.com/*", "https://*.contest2.yandex.ru/*", "https://*.contest2.yandex.com/*", "https://codeforces.ru/*", "https://codeforces.com/*", "https://hackerrank.com/*", "https://www.hackerrank.com/*", "https://www.facebook.com/hackercup/*", "http://usaco.org/*", "http://www.usaco.org/*", "https://code.google.com/codejam/contest/*", "http://contest.bayan.ir/*", "https://*.kattis.com/problems/*", "https://*.kattis.com/contests/*", "http://www.codechef.com/*", "https://www.codechef.com/*", "https://www.hackerearth.com/*", "http://*.contest.atcoder.jp/*", "https://csacademy.com/*" ],
-		"js": ["jquery.js", "parser.js", "content.js"],
+		"matches": [ "https://uva.onlinejudge.org/*", "http://spojtoolkit.com/*", "http://www.spoj.com/*", "https://*.contest.yandex.ru/*", "https://*.contest.yandex.com/*", "https://*.contest2.yandex.ru/*", "https://*.contest2.yandex.com/*", "https://codeforces.ru/*", "https://codeforces.com/*", "https://hackerrank.com/*", "https://www.hackerrank.com/*", "https://www.facebook.com/hackercup/*", "http://usaco.org/*", "http://www.usaco.org/*", "https://code.google.com/codejam/contest/*", "http://contest.bayan.ir/*", "https://*.kattis.com/problems/*", "https://*.kattis.com/contests/*", "http://www.codechef.com/*", "https://www.codechef.com/*", "https://www.hackerearth.com/*", "http://*.contest.atcoder.jp/*", "https://csacademy.com/*" ],
+		"js": ["jquery.js", "pdf.min.js", "pdf.worker.min.js", "parser.js", "content.js"],
         "run_at": "document_idle"
 	}
   ],

@@ -1,4 +1,33 @@
 // -------------------------------- PARSERS -------------------------------- \\
+async function uva() {
+	title = $('#col3_content_wrapper > table > tbody > tr:nth-child(2) > td > h3')[0].innerText;
+	console.log(title);
+	var url = $('#col3_content_wrapper > table > tbody > tr:nth-child(1) > td:nth-child(2) > a:nth-child(5)').attr('href');
+
+	var loadingTask = pdfjsLib.getDocument({url: url});
+	var doc = await loadingTask.promise;
+
+	var page = await doc.getPage(1);
+	var textContent = await page.getTextContent();
+
+	var items = textContent.items;
+	var sample = false;
+	for (var i = 0; i < items.length; ++i) {
+		if (sample) {
+			if (items[i].str === "Sample Output") {
+				tests += "\n";
+			}
+			tests += items[i].str + "\n";
+		}
+		if (items[i].str === "Sample Input") {
+			tests += items[i].str + "\n";
+			sample = true;
+		}
+	}
+
+	console.log(tests);
+}
+
 function atcoder() {
 	title = $('h2')[0].innerText.substring(4);
 	console.log(title);

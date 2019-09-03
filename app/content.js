@@ -1,11 +1,11 @@
-console.log("Hi from eHelper v0.7!");
+console.log("Hi from eHelper v0.8!");
 chrome.runtime.onMessage.addListener(parseTests);
 
 // Set Global Variables
 var title;
 var tests;
 
-function parseTests(request, sender, sendResponse) {
+async function parseTests(request, sender, sendResponse) {
 	if (sender.tab) {
         return;
 	}
@@ -16,7 +16,7 @@ function parseTests(request, sender, sendResponse) {
 	tests = "";
 
 	// Call the parser by platform name
-	window[request]();
+	await window[request]();
 
 	var res = { 
         platform: request,

@@ -19,7 +19,8 @@ function log(msg) {
 }
 
 function checkForValidUrl(tabId, changeInfo, tab) {
-    if (/^http?:\/\/(www[.])?spoj[.]com\/(.*\/)?problems\/.*$/.test(tab.url) ||
+    if (/^https:\/\/uva[.]onlinejudge[.]org\/.+$/.test(tab.url) ||
+		/^http?:\/\/(www[.])?spoj[.]com\/(.*\/)?problems\/.*$/.test(tab.url) ||
 		/^https:\/\/.*[.]kattis[.]com\/(contests\/.+\/)?problems\/.*$/.test(tab.url) ||
         /^https:\/\/.*contest2?[.]yandex[.](ru|com)\/.*contest\/\d*\/problems.*$/.test(tab.url) ||
         /^https:\/\/codeforces[.](ru|com)\/(contest|problemset|gym)\/(\d*\/problem|problem\/\d*)\/.+$/.test(tab.url) ||
@@ -72,8 +73,9 @@ function parseTask(tab) {
         chrome.tabs.sendMessage(tab.id, 'spoj');
 	} else if(/^http?:\/\/?spojtoolkit[.]com\/(.*\/)?test\/.*$/.test(tab.url)) {
         chrome.tabs.sendMessage(tab.id, 'spojtoolkit');
+    } else if (/^https:\/\/uva[.]onlinejudge[.]org\/.+$/.test(tab.url)) {
+        chrome.tabs.sendMessage(tab.id, 'uva');
 	}
-
 }
 
 chrome.pageAction.onClicked.addListener(parseTask);
