@@ -1,8 +1,8 @@
 # eHelper
 
-Parse programming contest sample test cases directly to vim.
+Parse programming contest sample test cases for seamless integration to IDE or Text editors.
 
-This extension is designed to work with (eHelper.vim)[https://github.com/earlisreal/ehelper] that will feed the parsed test cases when you run your code for easy testing.
+This extension is currently designed to work with [eHelper.vim](https://github.com/earlisreal/ehelper) that will feed the parsed test cases when you run your code for easy testing.
 
 ## Install
 
@@ -23,5 +23,9 @@ host\install_host_win.bat
 ## Usage
 
 * Make sure gvim is open
-* Go to a problem page (i.e [Codeforces - Watermelon] (http://codeforces.com/problemset/problem/4/A))
+* Go to a problem page (i.e [Codeforces - Watermelon](http://codeforces.com/problemset/problem/4/A))
 * Click the eHelper icon on the top right of your browser and Thats it!
+
+## TODO
+
+* Try to integrate with other Editor, such as IntelliJ, VS Code, etc...
