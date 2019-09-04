@@ -23,5 +23,5 @@ host\install_host_win.bat
 ## Usage
 
 * Make sure gvim is open
-* Go to a problem page (i.e (Watermelon) [http://codeforces.com/problemset/problem/4/A])
+* Go to a problem page (i.e [Codeforces - Watermelon] (http://codeforces.com/problemset/problem/4/A))
 * Click the eHelper icon on the top right of your browser and Thats it!
