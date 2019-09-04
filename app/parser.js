@@ -6,22 +6,24 @@ async function uva() {
 
 	var loadingTask = pdfjsLib.getDocument({url: url});
 	var doc = await loadingTask.promise;
+	var totalPage = doc.numPages;
+	for (var p = 1; p <= totalPage; ++p) {
+		var page = await doc.getPage(p);
+		var textContent = await page.getTextContent();
 
-	var page = await doc.getPage(1);
-	var textContent = await page.getTextContent();
-
-	var items = textContent.items;
-	var sample = false;
-	for (var i = 0; i < items.length; ++i) {
-		if (sample) {
-			if (items[i].str === "Sample Output") {
-				tests += "\n";
+		var items = textContent.items;
+		var sample = false;
+		for (var i = 0; i < items.length; ++i) {
+			if (sample) {
+				if (items[i].str === "Sample Output") {
+					tests += "\n";
+				}
+				tests += items[i].str + "\n";
 			}
-			tests += items[i].str + "\n";
-		}
-		if (items[i].str === "Sample Input") {
-			tests += items[i].str + "\n";
-			sample = true;
+			if (items[i].str === "Sample Input") {
+				tests += items[i].str + "\n";
+				sample = true;
+			}
 		}
 	}
 
