@@ -88,12 +88,7 @@ function hackerrank() {
 }
 
 function spoj() {
-	//
-	// Complete title of the problem
-	// title = $('.breadcrumb li.active')[0].innerText;
-	//
-
-	title = getSpojProblemCode;
+	title = getSpojProblemCode();
 	var input = $('h3:contains(ample)').next();
 	if (input.length > 1) {
 		tests = "Input:\n" + input[0].innerText;
@@ -107,7 +102,7 @@ function spoj() {
 
 function spojtoolkit() {
 	request = "spoj";
-	title = getSpojProblemCode;
+	title = getSpojProblemCode();
 	var input = $('#testInput')[0].value;
 	var output = $('#testOutput')[0].value;
 	tests = "Input:\n" + input + "\n\nOutput:\n" + output + "\n";
@@ -123,4 +118,5 @@ function getSpojProblemCode() {
 	problemCode = urlTokens[x];
 
 	console.log("SPOJ problem code: " + problemCode);
+	return problemCode;
 }

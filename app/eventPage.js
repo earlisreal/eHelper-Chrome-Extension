@@ -20,7 +20,7 @@ function log(msg) {
 
 function checkForValidUrl(tabId, changeInfo, tab) {
     if (/^https:\/\/uva[.]onlinejudge[.]org\/.+$/.test(tab.url) ||
-		/^http?:\/\/(www[.])?spoj[.]com\/(.*\/)?problems\/.*$/.test(tab.url) ||
+		/^https?:\/\/(www[.])?spoj[.]com\/(.*\/)?problems\/.*$/.test(tab.url) ||
 		/^https:\/\/.*[.]kattis[.]com\/(contests\/.+\/)?problems\/.*$/.test(tab.url) ||
         /^https:\/\/.*contest2?[.]yandex[.](ru|com)\/.*contest\/\d*\/problems.*$/.test(tab.url) ||
         /^https:\/\/codeforces[.](ru|com)\/(contest|problemset|gym)\/(\d*\/problem|problem\/\d*)\/.+$/.test(tab.url) ||
@@ -69,7 +69,7 @@ function parseTask(tab) {
         chrome.tabs.sendMessage(tab.id, 'atcoder');
     } else if (/^https:\/\/csacademy[.]com\/contest\/.*\/#task\/.*$/.test(tab.url)) {
         chrome.tabs.sendMessage(tab.id, 'csacademy');
-    } else if (/^http?:\/\/(www[.])?spoj[.]com\/(.*\/)?problems\/.*$/.test(tab.url)) {
+    } else if (/^https?:\/\/(www[.])?spoj[.]com\/(.*\/)?problems\/.*$/.test(tab.url)) {
         chrome.tabs.sendMessage(tab.id, 'spoj');
 	} else if(/^http?:\/\/?spojtoolkit[.]com\/(.*\/)?test\/.*$/.test(tab.url)) {
         chrome.tabs.sendMessage(tab.id, 'spojtoolkit');
