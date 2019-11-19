@@ -4,6 +4,12 @@ Parse programming contest sample test cases for seamless integration to IDE or T
 
 This extension is currently designed to work with [eHelper.vim](https://github.com/earlisreal/ehelper) that will feed the parsed test cases when you run your code for easy testing.
 
+## Requirements
+
+* Your machine should have [Python 2.7.6](https://www.python.org/downloads/release/python-276/) installed
+* Later version of Google Chrome - as it is only tested in this browser
+* And of course GVim - I only tested it on Vim 8 and only supported the GUI (GVim) application
+
 ## Install
 
 * Install the app folder into chrome extension
