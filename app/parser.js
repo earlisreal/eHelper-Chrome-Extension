@@ -7,13 +7,15 @@ async function uva() {
 	var loadingTask = pdfjsLib.getDocument({url: url});
 	var doc = await loadingTask.promise;
 	var totalPage = doc.numPages;
+	var sample = false;
 	for (var p = 1; p <= totalPage; ++p) {
 		var page = await doc.getPage(p);
 		var textContent = await page.getTextContent();
 
 		var items = textContent.items;
-		var sample = false;
 		for (var i = 0; i < items.length; ++i) {
+			if (p > 1 && i < 3) continue;
+
 			if (sample) {
 				if (items[i].str === "Sample Output") {
 					tests += "\n";
