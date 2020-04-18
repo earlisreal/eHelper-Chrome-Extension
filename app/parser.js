@@ -33,18 +33,18 @@ async function uva() {
 }
 
 function atcoder() {
-	title = $('h2')[0].innerText.substring(4);
+	title = $('span.h2')[0].innerText.substring(4);
 	console.log(title);
-	var inputOutput = $('.div-sample-copy:visible');
-	$.each(inputOutput, function(index, value) {
-		if (index % 2 == 0) {
+	var inputOutput = $('span.lang-en > div.part > section > pre');
+	for (var i = 0; i < inputOutput.length; ++i) {
+		if (i % 2 == 0) {
 			tests += "Input:\n";
 		}
 		else {
 			tests += "Output:\n";
 		}
-		tests += $(this).next()[0].innerText + "\n";
-	});
+		tests += inputOutput[i].innerText + "\n";
+	}
 }
 
 function codechef() {
