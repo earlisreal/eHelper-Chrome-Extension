@@ -48,14 +48,16 @@ function atcoder() {
 }
 
 function codechef() {
-	// TODO: Issue when Input keyword does not exists in <pre>
-	//		 it is inside <h3> then pre is next to it
 	title = $('#problem-code')[0].innerText;
 	console.log(title);
-	$('pre:contains(Input)').each(function(key, value) {
-		tests += $(this)[0].innerText;
-	});
-	console.log(tests);
+	var input = $('h3:contains(Example Input) + pre');
+	var output = $('h3:contains(Example Output) + pre');
+	for (var i = 0; i < input.length; ++i) {
+		tests += "input:\n";
+		tests += input[i].innerText + "\n";
+		tests += "output:\n";
+		tests += output[i].innerText + "\n";
+	}
 }
 
 function codeforces() {
