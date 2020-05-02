@@ -32,6 +32,16 @@ host\install_host_win.bat
 * Go to a problem page (i.e [Codeforces - Watermelon](http://codeforces.com/problemset/problem/4/A))
 * Click the eHelper icon on the top right of your browser and Thats it!
 
+## Supported Contest Sites
+
+* Codeforces
+* UVA Online Judge
+* HackerEarth
+* HackerRank
+* atCoder
+* CodeChef
+* SPOJ
+
 ## TODO
 
 * Try to integrate with other Editor, such as IntelliJ, VS Code, etc...
