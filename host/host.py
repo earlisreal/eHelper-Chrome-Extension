@@ -49,14 +49,15 @@ def read_thread_func(queue):
         config = json.load(f)
     
     # Create folder
-    path = config['base_path'] + jsonRes['platform'] + '/' + jsonRes['title'] + '/';
+    path = config['base_path'] + jsonRes['platform'] + '/' + jsonRes['title'] + '/'
     if not os.path.exists(path):
         os.makedirs(path)
 
     # Create tests file and write testCases
-    tests = open(path + '/tests', 'w')
-    tests.write(jsonRes['tests'])
-    tests.close()
+    if not os.path.exists(path + '/tests'):
+        tests = open(path + '/tests', 'w')
+        tests.write(jsonRes['tests'])
+        tests.close()
 
     # Open Gvim
     subprocess.call(['gvim', '--remote-tab', path  + config['program_name']])
