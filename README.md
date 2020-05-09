@@ -6,7 +6,7 @@ This extension is currently designed to work with [eHelper.vim](https://github.c
 
 ## Requirements
 
-* Your machine should have [Python 2.7.6](https://www.python.org/downloads/release/python-276/) installed
+* Your machine should have [Python 3](https://www.python.org/downloads/) installed
 * Later version of Google Chrome - as it is only tested in this browser
 * And of course GVim - I only tested it on Vim 8 and only supported the GUI (GVim) application
 
@@ -14,7 +14,6 @@ This extension is currently designed to work with [eHelper.vim](https://github.c
 
 * Install the app folder into chrome extension
 * Prepare the host installation
-	* TODO: I will update the install_host.sh to dynamically insert the location to HOST path
 * Install the host manifest:
 ```
 sudo host/install_host.sh
@@ -28,7 +27,7 @@ host\install_host_win.bat
 
 ## Usage
 
-* Make sure gvim is open
+* ~~Make sure gvim is open~~
 * Go to a problem page (i.e [Codeforces - Watermelon](http://codeforces.com/problemset/problem/4/A))
 * Click the eHelper icon on the top right of your browser and Thats it!
 
@@ -42,6 +41,3 @@ host\install_host_win.bat
 * CodeChef
 * SPOJ
 
-## TODO
-
-* Try to integrate with other Editor, such as IntelliJ, VS Code, etc...
