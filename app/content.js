@@ -18,7 +18,7 @@ async function parseTests(request, sender, sendResponse) {
 	// Call the parser by platform name
 	await window[request]();
 
-	title = title.replace(/[*?:\/<>|"]/g, '').trim();
+	title = title.replace(/[∴*?:\/<>|"]/g, '').trim();
 
 	var res = { 
         platform: request,
