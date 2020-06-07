@@ -3,6 +3,7 @@ import sys
 import subprocess
 import os
 import json
+import socket
 
 
 def send_message(message):
@@ -47,7 +48,11 @@ def read_message():
         tests.close()
 
     # Open Gvim
-    subprocess.call(['gvim', '--remote-tab', path  + config['program_name']])
+    if config['enable_wsl']:
+        ip = socket.gethostbyname(socket.gethostname())
+        subprocess.call(['wsl', 'gvim', '--remote-tab', path  + config['program_name'], '-display', ip + ':0'])
+    else:
+        subprocess.call(['gvim', '--remote-tab', path  + config['program_name']])
 
     # Program Ends Successfully
     send_message({"response": "Successfully created the tests file!"})
@@ -59,3 +64,4 @@ def Main():
 
 if __name__ == '__main__':
     Main()
+
