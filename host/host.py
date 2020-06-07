@@ -49,8 +49,10 @@ def read_message():
 
     # Open Gvim
     if config['enable_wsl']:
+        wsl_path = subprocess.check_output(['wsl', 'wslpath', path  + config['program_name']])
+        wsl_path = wsl_path.decode('utf-8').rstrip()
         ip = socket.gethostbyname(socket.gethostname())
-        subprocess.call(['wsl', 'gvim', '--remote-tab', path  + config['program_name'], '-display', ip + ':0'])
+        subprocess.call(['wsl', 'gvim', '--remote-tab', wsl_path, '-display', ip + ':0'])
     else:
         subprocess.call(['gvim', '--remote-tab', path  + config['program_name']])
 
