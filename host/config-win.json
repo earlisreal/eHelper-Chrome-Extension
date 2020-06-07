@@ -1,4 +1,5 @@
 {
     "base_path": "D:/Programs/",
-    "program_name": "sol.cpp"
+    "program_name": "sol.cpp",
+    "enable_wsl": false
 }
