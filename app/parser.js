@@ -124,3 +124,12 @@ function getSpojProblemCode() {
 	console.log("SPOJ problem code: " + problemCode);
 	return problemCode;
 }
+
+function codejam() {
+	title = $('#problem-select-selected-text')[0].innerText;
+	var input = $('.sample-input > .sample-content > .sample-content-text')[0].innerText;
+	var output = $('.sample-output> .sample-content > .sample-content-text')[0].innerText;
+	tests = "Input:\n" + input;
+	tests += "\nOutput:\n" + output;
+}
+

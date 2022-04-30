@@ -19,6 +19,7 @@ function log(msg) {
 }
 
 function checkForValidUrl(tabId, changeInfo, tab) {
+	console.log("Checking valid url");
     if (/^https:\/\/onlinejudge[.]org\/.+$/.test(tab.url) ||
 		/^https?:\/\/(www[.])?spoj[.]com\/(.*\/)?problems\/.*$/.test(tab.url) ||
 		/^https:\/\/.*[.]kattis[.]com\/(contests\/.+\/)?problems\/.*$/.test(tab.url) ||
@@ -33,6 +34,7 @@ function checkForValidUrl(tabId, changeInfo, tab) {
         /^http?:\/\/?spojtoolkit[.]com\/(.*\/)?test\/.*$/.test(tab.url) ||
         /^https?:\/\/(www[.])?hackerearth[.]com\/(.*\/)?(algorithm|approximate)\/.*$/.test(tab.url) ||
         /^https:\/\/csacademy[.]com\/contest\/.*\/#task\/.*$/.test(tab.url) ||
+        /^https:\/\/codingcompetitions[.]withgoogle[.]com\/codejam\/.*$/.test(tab.url) ||
         /^https:\/\/atcoder[.]jp\/contests\/.*\/tasks\/.*$/.test(tab.url))
     {
         chrome.pageAction.show(tabId);
@@ -75,6 +77,8 @@ function parseTask(tab) {
         chrome.tabs.sendMessage(tab.id, 'spojtoolkit');
     } else if (/^https:\/\/onlinejudge[.]org\/.+$/.test(tab.url)) {
         chrome.tabs.sendMessage(tab.id, 'uva');
+    } else if (/^https:\/\/codingcompetitions[.]withgoogle[.]com\/codejam\/.*$/.test(tab.url)) {
+        chrome.tabs.sendMessage(tab.id, 'codejam');
 	}
 }
 
